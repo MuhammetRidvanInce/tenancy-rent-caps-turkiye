@@ -4,7 +4,7 @@ Analysis code for *Tenancy Rent Caps under High Inflation: Divergence between Si
 
 The study examines changes in rents, housing burdens and consumption among sitting and new tenants in Türkiye. It uses repeated cross-sections from the Survey of Income and Living Conditions (SILC/GYKA) and the Household Budget Survey (HBS/HHBA). The estimates describe changes in conditional gaps between the two groups. They do not separately identify the effect of the rent cap from inflation and delayed rent adjustment.
 
-The [English manuscript](paper/manuscript.docx) contains the tables, figures, references and author declarations. This is a manuscript version, not a published journal article.
+This repository contains the analysis code and instructions for reproducing the estimates. The manuscript is not distributed here.
 
 ## Data access
 
@@ -62,18 +62,18 @@ The path in these examples must be replaced with the location of your authorised
 
 | Script | Purpose |
 | --- | --- |
-| `01_gyka_hazirlik.py` | Harmonise SILC household and individual files |
-| `02_hhba_hazirlik.py` | Build the HBS tenant sample and consumption measures |
-| `03_tanimlayici.py` | Descriptive statistics and measurement checks |
-| `04_ana_model.py` | SILC event studies, period models and bootstrap inference |
-| `05_doz_heterojenlik.py` | Tenancy duration, income and metropolitan-area comparisons |
-| `06_hareketlilik.py` | New-tenant shares and mobility comparisons |
-| `07_hhba_model.py` | HBS rent and consumption models |
-| `08_saglamlik.py` | Alternative samples and specifications |
-| `09_grafikler.py` | Figures with Turkish labels |
-| `10_dogrulama.py` | Validate generated outputs and the model registry |
-| `11_makale_tablolari.py` | Format the detailed analysis tables |
-| `13_figures_en.py` | Figures with English labels |
+| `01_prepare_silc.py` | Harmonise SILC household and individual files |
+| `02_prepare_hbs.py` | Build the HBS tenant sample and consumption measures |
+| `03_descriptive_statistics.py` | Descriptive statistics and measurement checks |
+| `04_main_models.py` | SILC event studies, period models and bootstrap inference |
+| `05_heterogeneity.py` | Tenancy duration, income and metropolitan-area comparisons |
+| `06_mobility.py` | New-tenant shares and mobility comparisons |
+| `07_hbs_models.py` | HBS rent and consumption models |
+| `08_robustness.py` | Alternative samples and specifications |
+| `09_figures_turkish.py` | Figures with Turkish labels |
+| `10_validate_outputs.py` | Validate generated outputs and the model registry |
+| `11_format_tables.py` | Format the detailed analysis tables |
+| `13_figures_english.py` | Figures with English labels |
 | `common.py` | File resolution, weighting, estimation and inference helpers |
 
 Script numbers are retained from the working analysis. Stage 12 was an editorial check of an earlier Turkish draft; it is not part of this replication run. Literature-search utilities and internal review notes are also omitted. The table formatter produces the detailed analysis tables; their numbering differs from the condensed journal manuscript. In the journal manuscript, Figure 1 corresponds to `sekil2_olay_calismasi_kira_EN` and Figure 2 to `sekil5_yeni_kiraci_payi_EN`.
@@ -82,7 +82,7 @@ Script numbers are retained from the working analysis. Stage 12 was an editorial
 
 SILC models use household weights and region-by-year fixed effects. Standard errors are clustered by the 26 NUTS-2 regions. The main period coefficients and specified contrasts use restricted wild cluster bootstrap-t inference with Webb weights and 9,999 replications. The random seed is `20261010`. HBS models use household weights and HC1 standard errors.
 
-Running the scripts creates household-level files in `datas/processed/`, local source manifests in `datas/metadata/`, and tables, figures and logs in `analysis/outputs/`. These directories are excluded from version control. The `.gitignore` file permits only the reviewed manuscript, source code and repository documentation; new files must be added deliberately.
+Running the scripts creates household-level files in `datas/processed/`, local source manifests in `datas/metadata/`, and tables, figures and logs in `analysis/outputs/`. These directories are excluded from version control. The `.gitignore` file permits only the reviewed source code and repository documentation; new files must be added deliberately.
 
 The estimation routines and analysis specifications are unchanged from the working project. This distribution adds the `TUIK_MICRODATA_ROOT` setting and records source paths relative to that directory. It omits the editorial stage from the runner. Microdata are neither downloaded nor supplied by the scripts.
 
