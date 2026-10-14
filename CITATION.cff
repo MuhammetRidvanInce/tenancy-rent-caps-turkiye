@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying manuscript when using this code."
+title: "Tenancy Rent Caps under High Inflation: Divergence between Sitting and New Tenants in Türkiye"
+type: software
+authors:
+  - family-names: "İnce"
+    given-names: "Muhammet Rıdvan"
+    orcid: "https://orcid.org/0000-0003-2050-2545"
+repository-code: "https://github.com/MuhammetRidvanInce/tenancy-rent-caps-turkiye"
